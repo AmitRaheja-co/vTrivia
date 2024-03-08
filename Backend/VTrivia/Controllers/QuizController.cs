@@ -27,7 +27,7 @@ namespace VTrivia.Controllers
         {
            // Console.WriteLine("DONE");
             _quizRepository.Add(quiz);
-            return Ok();
+            return Ok(new {quiz});
         }
     }
 }

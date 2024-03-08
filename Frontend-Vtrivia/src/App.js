@@ -6,10 +6,14 @@ import ResetPassword from './components/ForgetPassword/ResetPassword'
 import HomePage from "./components/HomePage/HomePage";
 import ProfileDashboard from './components/ProfileDashboard/ProfileDashboard';
 import CreateGroupPage from './components/TestForBackend/CreateGroup';
-import QuizForm from "./components/TestForBackend/CreateQuiz";
+import QuizForm from "./components/TestForBackend/AddQuestionPage";
 import GroupDashboard from "./components/Group/GroupDashboard/GroupDashboard"
 import CreateQuiz from './components/Group/GroupDashboard/CreateQuiz';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
+import AddQuestionPage from './components/TestForBackend/AddQuestionPage';
+
 import {Toaster} from 'react-hot-toast';
  
 function App() {
@@ -27,6 +31,8 @@ function App() {
           <Route path="QuizForm" element={<QuizForm/>}/>
           <Route path="GroupDashboard" element={<GroupDashboard/>}/>
           <Route path="CreateQuiz" element={<CreateQuiz/>}/>
+          <Route path="AddQuestionPage" element={<AddQuestionPage/>}/>
+
           
         </Routes>
       </BrowserRouter>

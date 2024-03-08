@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
  
-const Sidebar = ({ members,onClose }) => {
+const SidebarAll = ({ allusers,onClose }) => {
   const location = useLocation();
   const props = location.state?.props;
  
@@ -19,7 +19,7 @@ const Sidebar = ({ members,onClose }) => {
       <h3 className="text-xl font-semibold mb-4">header</h3>
  
       <ul>
-        {members.map((name, index) => (
+        {allusers.map((name, index) => (
           <li key={index} className="mb-2">
             {name}
           </li>
@@ -29,5 +29,5 @@ const Sidebar = ({ members,onClose }) => {
   );
 };
  
-export default Sidebar;
+export default SidebarAll;
  

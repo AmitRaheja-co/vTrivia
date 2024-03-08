@@ -27,7 +27,11 @@ namespace VTrivia.Repository
             var sql = "SELECT * FROM Quizs WHERE Id = @id";
             return db.Query<Quiz>(sql, new { id }).Single();
         }
-
+        public IEnumerable<Quiz> GetQuizGroup(int id)
+        {
+            var sql = "SELECT * FROM Quizs WHERE groupId = @id";
+            return db.Query<Quiz>(sql, new { id }).ToList();
+        }
         public IEnumerable<Quiz> GetAll()
         {
             var sql = "SELECT * FROM Quizs";

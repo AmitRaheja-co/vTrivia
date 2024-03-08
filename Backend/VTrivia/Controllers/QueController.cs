@@ -26,8 +26,9 @@ namespace VTrivia.Controllers
         [HttpPost]
         public IActionResult Create(Que que)
         {
+            Console.WriteLine("HELLO");
             _queRepository.Add(que);
-            return Ok();
+            return Ok(que);
         }
     }
 }

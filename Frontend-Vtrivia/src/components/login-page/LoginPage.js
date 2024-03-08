@@ -3,12 +3,36 @@ import "./LoginPage.css";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+ 
+
 
 const LoginPage = () => {
+
+  const postDataWithJWT = (jwtToken ) => {
+    axios.get('https://localhost:7089/Group', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwtToken}`, // Include the JWT token in the Authorization header
+      },
+    })
+    .then((response) => {
+    //  console.log('POST request successful:', response.data);
+      navigate("/Dashboard", { state: { props: response.data } });
+      // Add any additional logic after successful submission
+    })
+    .catch((error) => {
+      console.error('Error submitting form:', error);
+      // Handle errors appropriately
+    });
+  };
+
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -27,13 +51,22 @@ const LoginPage = () => {
         }
       )
       .then((response) => {
-        console.log("DONE");
-        console.log(response);
-        navigate("/Dashboard");
+       // console.log("DONE");
+        const bearerToken = response.data.accessToken;
+        localStorage.setItem('jwt',bearerToken);
+        // console.log(response);
+        
       })
       .catch((error) => {
         console.log(error);
       });
+      // console.log("above testing");
+      // console.log(localStorage.getItem('jwt'));
+      // console.log("below testing");
+
+      postDataWithJWT(localStorage.getItem('jwt'));
+      
+
   };
   return (
     <>
@@ -122,5 +155,5 @@ const LoginPage = () => {
     </>
   );
 };
-
+ 
 export default LoginPage;

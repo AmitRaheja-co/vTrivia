@@ -18,13 +18,15 @@ namespace VTrivia.Controllers
         private readonly IGroupRepository _groupRepository;
         private readonly IAppUserRepository _appUserRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public GroupController(IGroupRepository groupRepository, IHttpContextAccessor httpContextAccessor,IAppUserRepository appUserRepository, IUserJoinedRepository userJoinedRepository, IQuizQuesRepository quizQuesRepository)
+        private readonly IQuizRepository _quizRepository;
+        public GroupController(IGroupRepository groupRepository, IHttpContextAccessor httpContextAccessor,IAppUserRepository appUserRepository, IUserJoinedRepository userJoinedRepository, IQuizQuesRepository quizQuesRepository,IQuizRepository quizRepository)
         {
             _groupRepository = groupRepository;
             _httpContextAccessor = httpContextAccessor;
             _appUserRepository = appUserRepository;
             _userJoinedRepository = userJoinedRepository;
             _quizQuesRepository = quizQuesRepository;
+            _quizRepository = quizRepository;
         }
         [HttpPost]
         //[Authorize]
@@ -38,11 +40,50 @@ namespace VTrivia.Controllers
             return Ok(StatusCode(200));
         }
         [HttpGet]
-        public IActionResult GetGroups() { 
-            var all_groups = _groupRepository.GetAll();
-            return Ok(new { all_groups});
-        }
+        [Authorize]
+        public IActionResult GetGroups() {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userName = _appUserRepository.Get(userId);
+            IEnumerable<UserJoined> all_groups_mapping = _userJoinedRepository.GetAll();
+            List<Group> groups_joined = new List<Group>();
+            List<Group> public_groups = new List<Group>();
+            foreach (var item in all_groups_mapping)
+            {
+                if (item.UserId==userId)
+                {
+                    Group curr = _groupRepository.Get((int)item.GroupId);
+                    groups_joined.Add(curr);                    
+                }
+                else
+                {
+                    Group curr = _groupRepository.Get((int)item.GroupId);
+                    public_groups.Add(curr);
+                }
+            }
 
+
+            return Ok(new { userId,userName,groups_joined,public_groups});
+        }
+        [Authorize]
+        [HttpPost("GetInfo")]
+        public IActionResult getInfoOfAGroup(input grp)
+        {
+            int grpId = grp.grpId;
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            Group curr_group = _groupRepository.Get(grpId);
+            List<AppUser> members = new List<AppUser>();
+            List<AppUser> all = new List<AppUser>();
+            all = _appUserRepository.GetAll().ToList();
+            foreach (var user in _userJoinedRepository.GetMembers(grpId).ToList())
+            {
+
+                members.Add(_appUserRepository.Get(user.UserId));
+            }
+            List<Quiz> quizzz = new List<Quiz>();
+            quizzz = _quizRepository.GetQuizGroup(grpId).ToList();
+            return Ok(new {curr_group,members,userId,all});
+        }
         [HttpPost("Join")]
         public IActionResult JoinGroup(int GrpId)
         {

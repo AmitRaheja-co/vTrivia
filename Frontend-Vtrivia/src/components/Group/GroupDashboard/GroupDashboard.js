@@ -1,22 +1,45 @@
 import React, { useState } from "react";
 import CreateQuizModal from "./CreateQuizModal";
+import QuizCard from "./QuizCard";
 import Sidebar from "./Sidebar";
- 
+import SidebarAll from "./SidebarAll";
+
+import { useLocation } from "react-router-dom";
+
 const GroupDashboard = () => {
   const [createQuizModal, setCreateQuizModal] = useState(false);
   const [showMembersSidebar, setShowMembersSidebar] = useState(false);
- 
+  const [showInviteSidebar, setShowInviteSidebar] = useState(false);
+  const location = useLocation();
+  const props = location.state?.props;
+  const currGroup = location.state?.props.curr_group;
+  const members = location.state?.props.members || [];
+  const membersUsername = members.map((member) => member.userName);
+  const userId = location.state?.props.userId;
+  const allUsers = location.state?.props.all || [];
+  const allUsername = allUsers.map((user) => user.userName);
+
+
+
+  console.log(membersUsername);
+  console.log(allUsername);
+
   const openCreateQuizModal = () => {
     setCreateQuizModal(true);
   };
- 
+
   const closeCreateQuizModal = () => {
     setCreateQuizModal(false);
   };
- 
+
   const toggleMembersSidebar = () => {
     setShowMembersSidebar(!showMembersSidebar);
   };
+
+  const toggleInviteSidebar = () => {
+    setShowInviteSidebar(!showInviteSidebar);
+  };
+
   return (
     <>
       <div className="bg-blue-300 h-screen w-screen">
@@ -50,25 +73,30 @@ const GroupDashboard = () => {
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Members
+                  {showMembersSidebar && <Sidebar members={membersUsername} onClose={toggleMembersSidebar} />}
                 </button>
- 
-                {/* Log Out button */}
+
                 <button
                   type="button"
-                  onClick={toggleMembersSidebar}
+                  onClick={toggleInviteSidebar}
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Invite
+                  {showInviteSidebar && <SidebarAll allusers={allUsername} onClose={toggleInviteSidebar} />}
                 </button>
               </div>
             </div>
           </div>
+
         </nav>
- 
-        {showMembersSidebar && <Sidebar onClose={toggleMembersSidebar} />}
+
+        {/* Container for QuizCards with Flexbox */}
+        <div className="flex flex-wrap justify-between">
+          <QuizCard title="Quiz1" />
+        </div>
       </div>
     </>
   );
 };
- 
+
 export default GroupDashboard;

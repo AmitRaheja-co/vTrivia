@@ -30,10 +30,7 @@ const CreateGroupModal = ({ isOpen, onClose }) => {
       })
       .then((response) => {
         console.log("Post request response:", response.data);
-        setTimeout(() => {
-            
-        }, 2000);
-        navigate("/CreateQuiz");
+        navigate('/CreateQuiz',{ state: { props: response.data } });
       })
       .catch((error) => {
         console.error("Post request error:", error);

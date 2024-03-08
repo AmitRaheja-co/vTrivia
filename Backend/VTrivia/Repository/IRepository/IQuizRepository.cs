@@ -11,7 +11,7 @@ namespace VTrivia.Repository.IRepository
         //IEnumerable<Quiz> GetQuiz(string id);
         Quiz Add(Quiz entity);
         void Remove(int id);
-
+        IEnumerable<Quiz> GetQuizGroup(int id);
         Quiz Update(Quiz entity);
         void RemoveRange(IEnumerable<Quiz> entities);
     }
