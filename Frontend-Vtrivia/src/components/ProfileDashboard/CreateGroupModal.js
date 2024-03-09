@@ -7,31 +7,63 @@ const CreateGroupModal = ({ isOpen, onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
+  const jwt = localStorage.getItem("jwt");
+  // console.log("DONE");
+  // console.log(jwt);
+  const handleCreateGroup =async (e) => {
+    let grpId;
+      e.preventDefault();
 
-  const handleCreateGroup = (event) => {
-    event.preventDefault();
-    axios
+      // Dummy data for post request
+      const postData = {
+          name: title,
+          description: description
+      };
+
+      // Dummy Axios post request
+      await axios.post('https://localhost:7089/Group', postData,
+      {
+          headers: {
+            "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`
+          },
+        }
+      
+      )
+          .then(response => {
+              console.log('Post request response:', response.data);
+              grpId=response.data.id;
+              //console.log(grpId);
+              //navigate('/GroupDashboard',)
+              // Close the popup
+              //onClose();
+          })
+          .catch(error => {
+              console.error('Post request error:', error);
+          });
+
+          //console.log("Haaaa"+grpId);
+         await  axios
       .post(
-        "https://localhost:7089/Group",
+        "https://localhost:7089/Group/GetInfo",
         {
-          title,
-          description,
+          grpId:grpId
         },
+        
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
           },
         }
       )
       .then((response) => {
-        console.log("DONE");
-        console.log(response);
-        navigate("/GroupDashboard");
+        console.log(response.data);
+        navigate('/GroupDashboard', { state: { props: response.data } });
       })
       .catch((error) => {
         console.log(error);
       });
-    onClose();
   };
 
   return (

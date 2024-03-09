@@ -4,7 +4,9 @@ import axios from 'axios'; // Import Axios
 function CreateGroupPopup({ onClose }) {
     const [groupTitle, setGroupTitle] = useState('');
     const [groupDescription, setGroupDescription] = useState('');
-
+    const jwt = localStorage.getItem("jwt");
+    console.log("DONE");
+    console.log(jwt);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -19,7 +21,7 @@ function CreateGroupPopup({ onClose }) {
         {
             headers: {
               "Content-Type": "application/json",
-              Authorization: "Bearer CfDJ8AH6pGLB7GxPkY-2gNTRT5thhKU2lafdMdncHQh1reAdvZoJThknqjmXvosYEW5xF3Dy1T3fGCiyRcdh7OLTLKpiLggX5S30xjC0VGQFkTKYU7hGgeFTRy_3E4QnYO5cFs89q2ilkBw8SNCQ9aCdMfcfROVL7ULHc4XrmRJVqUgByIu8Ysa4Ed3FR0y_bfLaZ5lJINLF9xhd6oSBRhezj2w_ZMK7Hv45hADtdwNJrYIpYrcOdkLRFhUpQXY8cpjg8rzgIkdYmZ0iflRwaEQxStCCdpr1zYBo9SJNnVldr8SA2j1u_ohX6bcIUDrEnzXxUnzboOd-uQBhNwij86GBOpVyx0rb7ondfgA6JrvYtTsNkLFetXX0WCLYEaCtZ1D91isKR-heq8h-rZ95-BA_BYnYg6IQcDZnftzIwp1jjGLhMiipkV_Um5KSi6yQKejJw_UGzcpoShVuvpZ3iir187kHoVGZTlQe_kQqcmB7_uKWTM_yhERWOa_my2PZv3e6bRwIIN1KtIAVLGy-VpT6F4ZILXmYCElFGz8uqJbEddOToNLCz_SLWYsSmsUGFoBYMHoGDlptiplNPo6_k7WLY0srTsfWsRE06VxRixpIpSKyM5Ml0bJrZu-qVEIg4tOu06T1adNb1kXK6Kxrob_BNqmXmLSzXlGWIKbIowmdXvOaOcRJVvinqvfK7OvJFWL7gg"
+            Authorization: `Bearer ${jwt}`
             },
           }
         

@@ -11,8 +11,8 @@ const ProfileDashboard = () => {
   const userId = props.userId;
   const groupsJoined = props.groups_joined;
   const publicGroups = props.public_groups;
- // console.log(publicGroups);
-  //console.log(props);
+ console.log(publicGroups);
+  console.log(props);
 
   return (
     <>

@@ -29,15 +29,19 @@ namespace VTrivia.Controllers
             _quizRepository = quizRepository;
         }
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult Create(Group group)
         {
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            UserJoined entity = new UserJoined();
             
-            group.AdminId = "bda3c583-d865-4a43-bbd4-7fe3d6870a02";
+            group.AdminId = userId;
             group.TimeStamp = DateTime.Now;
             _groupRepository.Add(group);
-            return Ok(StatusCode(200));
+            entity.UserId = userId;
+            entity.GroupId = group.Id;
+            _userJoinedRepository.Add(entity);
+            return Ok(group);
         }
         [HttpGet]
         [Authorize]
@@ -80,9 +84,9 @@ namespace VTrivia.Controllers
 
                 members.Add(_appUserRepository.Get(user.UserId));
             }
-            List<Quiz> quizzz = new List<Quiz>();
-            quizzz = _quizRepository.GetQuizGroup(grpId).ToList();
-            return Ok(new {curr_group,members,userId,all});
+            List<Quiz> quizs = new List<Quiz>();
+            quizs = _quizRepository.GetQuizGroup(grpId).ToList();
+            return Ok(new {curr_group,members,userId,all,quizs});
         }
         [HttpPost("Join")]
         public IActionResult JoinGroup(int GrpId)

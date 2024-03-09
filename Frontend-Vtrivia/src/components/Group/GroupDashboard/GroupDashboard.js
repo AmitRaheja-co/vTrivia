@@ -18,11 +18,15 @@ const GroupDashboard = () => {
   const userId = location.state?.props.userId;
   const allUsers = location.state?.props.all || [];
   const allUsername = allUsers.map((user) => user.userName);
+  const quizs = props.quizs;
+  //console.log(props.curr_group.id);
 
 
-
-  console.log(membersUsername);
-  console.log(allUsername);
+  // console.log(membersUsername);
+  // console.log(allUsername);
+  console.log("idher h quizs");
+  console.log(quizs);
+  //console.log()
 
   const openCreateQuizModal = () => {
     setCreateQuizModal(true);
@@ -64,6 +68,7 @@ const GroupDashboard = () => {
                   Create Quiz
                 </button>
                 <CreateQuizModal
+                  grpId={props.curr_group.id}
                   isOpen={createQuizModal}
                   onClose={closeCreateQuizModal}
                 />
@@ -92,7 +97,9 @@ const GroupDashboard = () => {
 
         {/* Container for QuizCards with Flexbox */}
         <div className="flex flex-wrap justify-between">
-          <QuizCard title="Quiz1" />
+          {quizs.map((quiz) => (
+            <QuizCard key={quiz.id} name={`quiz${quiz.id}`} />
+          ))}
         </div>
       </div>
     </>

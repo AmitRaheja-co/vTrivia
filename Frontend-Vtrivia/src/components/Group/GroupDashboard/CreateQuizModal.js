@@ -3,12 +3,12 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateGroupModal = ({ isOpen, onClose }) => {
+const CreateGroupModal = ({ isOpen, onClose,grpId }) => {
   const [scheduleTime, setScheduleTime] = useState("");
   const [quizDuration, setQuizDuration] = useState("");
   const [windowTime, setWindowTime] = useState("");
 
-  
+  console.log("DNE"+ grpId);
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const CreateGroupModal = ({ isOpen, onClose }) => {
         startTimeStamp:scheduleTime,
       quizDuration:parseInt(quizDuration),
       timeWindow:parseInt(windowTime),
-      groupId:4
+      groupId:grpId
     };
 
     axios

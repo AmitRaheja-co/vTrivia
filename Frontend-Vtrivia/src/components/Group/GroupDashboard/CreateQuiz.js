@@ -6,10 +6,12 @@ import { useLocation } from "react-router-dom";
 const CreateQuiz = () => {
   const location = useLocation();
   const props = location.state?.props;
-  const Quizid = location.state?.props.id;
+  const grpId = props.quiz.groupId;
+  const jwt = localStorage.getItem('jwt');
 
   console.log("below");
   console.log(props);
+  console.log(grpId);
 
   const [questions, setQuestions] = useState([
     { statement: "", options: ["", "", "", ""], answer: "" },
@@ -76,7 +78,28 @@ const CreateQuiz = () => {
 
   const handleSub = (event) => {
     event.preventDefault();
-    navigate('/Login');
+    console.log(grpId);
+    axios
+      .post(
+        "https://localhost:7089/Group/GetInfo",
+        {
+          grpId:grpId
+        },
+        
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        navigate('/GroupDashboard', { state: { props: response.data } });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
 

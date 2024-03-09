@@ -2,6 +2,7 @@ import React from "react";
 import groupIcon from "../../../assets/QuizLogo.png";
  
 const QuizCard = ({name}) => {
+  console.log(name);
   return (
     <div className="mt-5 ml-3 max-w-60 max-h-96 rounded-3xl overflow-hidden shadow-md">
       <img
