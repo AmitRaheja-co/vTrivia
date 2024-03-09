@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import groupIcon from "../../../assets/QuizLogo.png";
 import AttemptQuizModal from "./AttemptQuizModal";
 
-const QuizCard = ({ name }) => {
+const QuizCard = ({ name, isOpen, onClose }) => {
   const [attemptQuiz, setAttemptQuiz] = useState(false);
 
   const openAttemptQuizModal = () => {
@@ -28,7 +28,6 @@ const QuizCard = ({ name }) => {
         <p className="text-gray-700 text-base">{name}</p>
       </div>
       <AttemptQuizModal
-        grpId={props.curr_group.id}
         isOpen={attemptQuiz}
         onClose={closeAttemptQuizModal}
       />
