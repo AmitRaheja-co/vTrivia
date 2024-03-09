@@ -7,6 +7,7 @@ import {toast} from 'react-hot-toast'
 const ForgetPassword = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
