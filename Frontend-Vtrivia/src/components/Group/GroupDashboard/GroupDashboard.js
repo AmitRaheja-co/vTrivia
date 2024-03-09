@@ -21,7 +21,6 @@ const GroupDashboard = () => {
   const quizs = props.quizs;
   //console.log(props.curr_group.id);
 
-
   // console.log(membersUsername);
   // console.log(allUsername);
   console.log("idher h quizs");
@@ -78,7 +77,12 @@ const GroupDashboard = () => {
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Members
-                  {showMembersSidebar && <Sidebar members={membersUsername} onClose={toggleMembersSidebar} />}
+                  {showMembersSidebar && (
+                    <Sidebar
+                      members={membersUsername}
+                      onClose={toggleMembersSidebar}
+                    />
+                  )}
                 </button>
 
                 <button
@@ -87,12 +91,16 @@ const GroupDashboard = () => {
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Invite
-                  {showInviteSidebar && <SidebarAll allusers={allUsername} onClose={toggleInviteSidebar} />}
+                  {showInviteSidebar && (
+                    <SidebarAll
+                      allusers={allUsername}
+                      onClose={toggleInviteSidebar}
+                    />
+                  )}
                 </button>
               </div>
             </div>
           </div>
-
         </nav>
 
         {/* Container for QuizCards with Flexbox */}
