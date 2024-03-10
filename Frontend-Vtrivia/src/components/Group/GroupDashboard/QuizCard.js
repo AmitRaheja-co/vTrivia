@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React,{useState} from "react";
 import groupIcon from "../../../assets/QuizLogo.png";
 import AttemptQuizModal from "./AttemptQuizModal";
 
-const QuizCard = ({ name, isOpen, onClose }) => {
+const QuizCard = ({ name ,Id}) => {
   const [attemptQuiz, setAttemptQuiz] = useState(false);
 
   const openAttemptQuizModal = () => {
@@ -12,7 +12,7 @@ const QuizCard = ({ name, isOpen, onClose }) => {
   const closeAttemptQuizModal = () => {
     setAttemptQuiz(false);
   };
-  console.log(name);
+
   return (
     <div
       className="mt-5 ml-3 max-w-60 max-h-96 rounded-3xl overflow-hidden shadow-md"
@@ -30,6 +30,7 @@ const QuizCard = ({ name, isOpen, onClose }) => {
       <AttemptQuizModal
         isOpen={attemptQuiz}
         onClose={closeAttemptQuizModal}
+        quizId = {Id}
       />
     </div>
   );

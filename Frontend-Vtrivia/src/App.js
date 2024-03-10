@@ -9,6 +9,7 @@ import CreateGroupPage from './components/TestForBackend/CreateGroup';
 import QuizForm from "./components/TestForBackend/AddQuestionPage";
 import GroupDashboard from "./components/Group/GroupDashboard/GroupDashboard"
 import CreateQuiz from './components/Group/GroupDashboard/CreateQuiz';
+import StartQuiz from "./components/Group/GroupDashboard/StartQuiz";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -32,6 +33,8 @@ function App() {
           <Route path="GroupDashboard" element={<GroupDashboard/>}/>
           <Route path="CreateQuiz" element={<CreateQuiz/>}/>
           <Route path="AddQuestionPage" element={<AddQuestionPage/>}/>
+          <Route path="StartQuiz" element={<StartQuiz/>}/>
+
 
           
         </Routes>

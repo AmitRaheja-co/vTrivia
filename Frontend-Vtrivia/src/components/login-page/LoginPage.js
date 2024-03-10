@@ -2,21 +2,24 @@ import React, { useState } from "react";
 import "./LoginPage.css";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
+import logo from "../../assets/Thundre-removebg-preview.png";
 import { useNavigate } from "react-router-dom";
  
-
-
+ 
+ 
 const LoginPage = () => {
-
-  const postDataWithJWT = (jwtToken ) => {
-    axios.get('https://localhost:7089/Group', {
+ 
+  const postDataWithJWT = async (jwtToken ) => {
+    console.log(jwtToken);
+    await axios.get('https://localhost:7089/Group', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwtToken}`, // Include the JWT token in the Authorization header
+        Authorization: `Bearer ${jwtToken}` // Include the JWT token in the Authorization header
       },
     })
     .then((response) => {
     //  console.log('POST request successful:', response.data);
+    //alert(response.data);
       navigate("/Dashboard", { state: { props: response.data } });
       // Add any additional logic after successful submission
     })
@@ -25,17 +28,17 @@ const LoginPage = () => {
       // Handle errors appropriately
     });
   };
-
-
-
-
+ 
+ 
+ 
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
  
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
+    await axios
       .post(
         "https://localhost:7089/login",
         {
@@ -55,7 +58,7 @@ const LoginPage = () => {
         const bearerToken = response.data.accessToken;
         localStorage.setItem('jwt',bearerToken);
         // console.log(response);
-        
+       
       })
       .catch((error) => {
         console.log(error);
@@ -63,16 +66,28 @@ const LoginPage = () => {
       // console.log("above testing");
       // console.log(localStorage.getItem('jwt'));
       // console.log("below testing");
-
-      postDataWithJWT(localStorage.getItem('jwt'));
-      
-
+ 
+     await postDataWithJWT(localStorage.getItem('jwt'));
+     
+ 
   };
   return (
     <>
       <Navbar />
       <section className="bg-sky-300 h-screen w-screen">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <img src={logo} style={{
+         position: 'absolute',
+    top: '40px', /* Adjust to position the image behind the div */
+    left: '40%', /* Adjust to position the image behind the div */
+    width: '', /* Make the image slightly larger than the container */
+    height: 'calc(100% + 20px)',
+    transform:'rotate(20deg)', /* Make the image slightly larger than the container */
+   zIndex:0
+      }}/>
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0" style={{
+          position:'relative'
+        }}>
+       
           <a
             href="/"
             className="flex items-center mb-6 text-2xl font-semibold text-blue-500 dark:text-"

@@ -2,11 +2,15 @@ import React from "react";
 import HomeNav from "./HomeNav";
 import logo from "../../assets/QuizLogo.png";
 import FriendCard from "./FriendCard";
+import Carousel from "./Carousel";
 
 const HomePage = () => {
+
   return (
     <>
+    <div style={{ overflowX: "hidden" }}>
       <HomeNav />
+      <Carousel/>
       <div className="bg-sky-400 h-screen w-screen grid grid-cols-5">
         <div className="col-span-3">
           <a
@@ -95,6 +99,7 @@ const HomePage = () => {
           Github="https://github.com/AmitRaheja-co"
           Linkedin="https://www.linkedin.com/in/amit-raheja-5550a3200/"
         />
+      </div>
       </div>
     </>
   );

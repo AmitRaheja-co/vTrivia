@@ -14,5 +14,6 @@ namespace VTrivia.Model
         public string? option4 { get; set; }
         [Required]
         public string answer {  get; set; }
+        public int quizId { get; set;}
     }
 }

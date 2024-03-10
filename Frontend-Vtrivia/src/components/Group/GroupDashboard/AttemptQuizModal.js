@@ -3,17 +3,17 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateGroupModal = ({ isOpen, onClose, grpId }) => {
+const AttemptQuizModal = ({ isOpen, onClose ,quizId}) => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const postData = {
-      groupId: grpId,
+      grpId: quizId,
     };
-
+    //alert(quizId);
     axios
-      .post("https://localhost:7089/api/Quiz", postData, {
+      .post("https://localhost:7089/api/Quiz/GetQues", postData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,10 +33,10 @@ const CreateGroupModal = ({ isOpen, onClose, grpId }) => {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-sky-500 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h2 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h2 className="text-xl font-bold leading-tight tracking-tight text-blue-600 md:text-2xl dark:text-white">
               Instructions :
             </h2>
-            <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+            <ul class="max-w-md space-y-1 text-blue-600 list-disc list-inside dark:text-black">
               <li>
                 Before you proceed with the quiz, please read the following
                 instructions carefully:{" "}
@@ -73,4 +73,4 @@ const CreateGroupModal = ({ isOpen, onClose, grpId }) => {
   );
 };
 
-export default CreateGroupModal;
+export default AttemptQuizModal;

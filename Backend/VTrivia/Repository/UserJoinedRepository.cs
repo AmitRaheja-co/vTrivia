@@ -46,12 +46,17 @@ namespace VTrivia.Repository
             return db.Query<UserJoined>(sql, new { grpId }).ToList();
         }
 
+        //public bool IsJoined(int grpId, string Userid)
+        //{
+        //    var sql="SELECT * FROM User"
+        //}
+
         public void Remove(int id)
         {
             var sql = "DELETE From UserJoineds WHERE Id = @id";
             db.Execute(sql, new { id });
         }
-
+        
         public void RemoveRange(IEnumerable<UserJoined> entities)
         {
             throw new NotImplementedException();

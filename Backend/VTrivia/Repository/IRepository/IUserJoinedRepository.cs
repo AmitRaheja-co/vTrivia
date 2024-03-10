@@ -11,7 +11,7 @@ namespace VTrivia.Repository.IRepository
         
         UserJoined Add(UserJoined entity);
         void Remove(int id);
-
+        //bool IsJoined(int grpId, string Userid);
         UserJoined Update(UserJoined entity);
         IEnumerable<UserJoined> GetMembers(int grpId);
         void RemoveRange(IEnumerable<UserJoined> entities);

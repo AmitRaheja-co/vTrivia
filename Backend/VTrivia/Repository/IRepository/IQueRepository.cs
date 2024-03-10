@@ -14,5 +14,6 @@ namespace VTrivia.Repository.IRepository
 
         Que Update(Que entity);
         void RemoveRange(IEnumerable<Que> entities);
+        IEnumerable<Que> getQuestion(int id);
     }
 }

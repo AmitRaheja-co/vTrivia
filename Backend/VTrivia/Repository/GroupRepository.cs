@@ -27,7 +27,6 @@ namespace VTrivia.Repository
         public Group Get(int id)
         {
             var sql = "SELECT * FROM Groups WHERE Id = @id";
-
             return db.Query <Group>(sql, new { id }).Single();
         }
 

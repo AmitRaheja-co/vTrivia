@@ -37,44 +37,42 @@ const CreateQuiz = () => {
         option2: options[1],
         option3: options[2],
         option4: options[3],
-        answer,
+        answer
       };
     });
 
     const lastQuestion = formattedQuestions[formattedQuestions.length - 1];
 
-    axios
-      .post(
-        "https://localhost:7089/Que",
-        {
-
-          statement: lastQuestion.statement,
-          option1: lastQuestion.option1,
-          option2: lastQuestion.option2,
-          option3: lastQuestion.option3,
-          option4: lastQuestion.option4,
-          answer: lastQuestion.answer
-
-
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+    axios.post(
+      "https://localhost:7089/Que",
+      {
+        statement: lastQuestion.statement,
+        option1: lastQuestion.option1,
+        option2: lastQuestion.option2,
+        option3: lastQuestion.option3,
+        option4: lastQuestion.option4,
+        answer: lastQuestion.answer,
+        quizId:props.quiz.id
+      },
+      {
+       
+        headers: {
+          "Content-Type": "application/json"
         }
-      )
-      .then((response) => {
-        console.log("DONE");
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+      }
+    )
+    .then((response) => {
+      console.log("DONE");
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
     setTimeout(() => {
       addQuestion();
     }, 500);
-  };
+  }    
 
   const handleSub = (event) => {
     event.preventDefault();
@@ -83,9 +81,9 @@ const CreateQuiz = () => {
       .post(
         "https://localhost:7089/Group/GetInfo",
         {
-          grpId:grpId
+          grpId: grpId
         },
-        
+
         {
           headers: {
             "Content-Type": "application/json",

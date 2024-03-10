@@ -14,5 +14,7 @@ namespace VTrivia.Repository.IRepository
 
         QuizQues Update(QuizQues entity);
         void RemoveRange(IEnumerable<QuizQues> entities);
+
+        
     }
 }

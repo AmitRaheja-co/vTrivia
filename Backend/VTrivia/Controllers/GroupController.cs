@@ -53,20 +53,54 @@ namespace VTrivia.Controllers
             List<Group> public_groups = new List<Group>();
             foreach (var item in all_groups_mapping)
             {
-                if (item.UserId==userId)
+                Group curr = _groupRepository.Get((int)item.GroupId);
+                if (item.UserId == userId)
                 {
-                    Group curr = _groupRepository.Get((int)item.GroupId);
-                    groups_joined.Add(curr);                    
+                    bool chk = false;
+                    foreach(var j in groups_joined)
+                    {
+                        if (j == curr)
+                        {
+                            chk = true;
+                        }
+                    }
+                    if (!chk)
+                    {
+                        groups_joined.Add(curr);
+                    }
                 }
-                else
+            }
+            foreach(var item in all_groups_mapping)
+            {
+                Group curr = _groupRepository.Get((int)item.GroupId);
+                bool chk = false;
+                foreach (var i in groups_joined)
                 {
-                    Group curr = _groupRepository.Get((int)item.GroupId);
-                    public_groups.Add(curr);
+                    if (i.Id == curr.Id)
+                    {
+                        chk = true;
+                    }
+                }
+                if (!chk)
+                {
+                    bool chk1 = false;
+                    foreach (var j in public_groups)
+                    {
+                        if (j == curr)
+                        {
+                            chk1 = true;
+                        }
+                    }
+                    if (!chk1)
+                    {
+                        public_groups.Add(curr);
+                    }
                 }
             }
 
 
             return Ok(new { userId,userName,groups_joined,public_groups});
+            //return Ok("bhad me jao");
         }
         [Authorize]
         [HttpPost("GetInfo")]
@@ -89,15 +123,19 @@ namespace VTrivia.Controllers
             return Ok(new {curr_group,members,userId,all,quizs});
         }
         [HttpPost("Join")]
-        public IActionResult JoinGroup(int GrpId)
+        [Authorize]
+        public IActionResult JoinGroup(input grp)
         {
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            int GrpId = grp.grpId;
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             UserJoined userJoined = new UserJoined();
-            userJoined.UserId = "bda3c583-d865-4a43-bbd4-7fe3d6870a02";
+            userJoined.UserId = userId;
             userJoined.GroupId = GrpId;
-            _userJoinedRepository.Add(userJoined);  
-            return Ok();
-
+            _userJoinedRepository.Add(userJoined);
+            //Group grp = _groupRepository.Get(GrpId);
+            //return Ok("DONE");
+            //return RedirectToAction("getInfoOfAGroup",grp);
+            return Ok(grp);
         }
         [HttpGet("GetUser")]
         public IActionResult GetallUsers(int groupId)

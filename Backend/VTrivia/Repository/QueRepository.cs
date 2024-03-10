@@ -15,7 +15,7 @@ namespace VTrivia.Repository
         }
         public Que Add(Que entity)
         {
-            var sql = "INSERT INTO Ques (Statement,option1,option2,option3,option4,answer) VALUES(@Statement,@option1,@option2,@option3,@option4,@answer);"
+            var sql = "INSERT INTO Ques (Statement,option1,option2,option3,option4,answer,quizId) VALUES(@Statement,@option1,@option2,@option3,@option4,@answer,@quizId);"
               + "SELECT CAST(SCOPE_IDENTITY() as int);";
             var id = db.Query<int>(sql, entity).Single();
             entity.Id = id;
@@ -38,6 +38,12 @@ namespace VTrivia.Repository
         {
             var sql = "SELECT * FROM Ques";
             return db.Query<Que>(sql);
+        }
+
+        public IEnumerable<Que> getQuestion(int id)
+        {
+            var sql = "SELECT * FROM Ques WHERE quizId = @id";
+            return db.Query<Que>(sql, new { id }).ToList();
         }
 
         public void Remove(int id)

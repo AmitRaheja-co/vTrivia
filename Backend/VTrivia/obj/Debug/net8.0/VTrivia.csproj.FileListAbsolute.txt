@@ -670,3 +670,4 @@ C:\Users\amitr\OneDrive\Desktop\VTrivia\Backend\VTrivia\obj\Debug\net8.0\scopedc
 C:\Users\amitr\OneDrive\Desktop\VTrivia\Backend\VTrivia\obj\Debug\net8.0\VTrivia.csproj.CopyComplete
 C:\Users\amitr\OneDrive\Desktop\VTrivia\Backend\VTrivia\obj\Debug\net8.0\VTrivia.genruntimeconfig.cache
 C:\Users\amitr\OneDrive\Desktop\VTrivia\Backend\VTrivia\obj\Debug\net8.0\ref\VTrivia.dll
+C:\Users\amitr\OneDrive\Desktop\VTrivia\Backend\VTrivia\obj\Debug\net8.0\VTrivia.sourcelink.json

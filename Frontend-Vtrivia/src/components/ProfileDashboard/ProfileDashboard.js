@@ -22,6 +22,7 @@ const ProfileDashboard = () => {
         <div className="flex mt-5">
           {groupsJoined.map((group) => {
              return<ProfileCard
+              Id={group.id}
               key={group.id} // Make sure to provide a unique key
               Title={group.name}
               Designation={group.adminId === userId ? "Admin" : "Member"}
