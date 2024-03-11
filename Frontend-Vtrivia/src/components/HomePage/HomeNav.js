@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../../assets/App Logo.png"
 const HomeNav = () => {
   return (
     <>

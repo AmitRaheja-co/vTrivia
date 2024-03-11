@@ -44,7 +44,10 @@ const GroupDashboard = () => {
 
   return (
     <>
-      <div className="bg-blue-300 h-screen w-screen">
+      <div className="bg-blue-300" style={{
+        width:'100%',
+        height:'100vh'
+      }}>
         <nav className="bg-sky-600">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -94,7 +97,7 @@ const GroupDashboard = () => {
         </nav>
 
         {/* Container for QuizCards with Flexbox */}
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-wrap">
           {quizs.map((quiz) => (
             <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} />
             // {console.log(quiz.id);}

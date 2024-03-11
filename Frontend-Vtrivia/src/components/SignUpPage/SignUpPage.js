@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
+import logo from "../../assets/Thundre-removebg-preview.png";
 import { useNavigate } from "react-router";
  
 const SignUpPage = () => {
@@ -34,7 +35,19 @@ const SignUpPage = () => {
       <div className="h-screen bg-sky-300 flex justify-center items-center w-full">
         {/* <h1 className="text-3xl">Sign up to vTrivia</h1> */}
         <form onSubmit={handleSubmit}>
-          <div className="bg-blue-500 px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
+        <img src={logo} style={{
+         position: 'absolute',
+    top: '40px', /* Adjust to position the image behind the div */
+    left: '40%', /* Adjust to position the image behind the div */
+    width: '', /* Make the image slightly larger than the container */
+    height: 'calc(100% + 20px)',
+    transform:'rotate(20deg)', /* Make the image slightly larger than the container */
+   zIndex:0
+      }}/>
+          <div className="bg-blue-500 px-10 py-8 rounded-xl w-screen shadow-md max-w-sm" style={{
+            position:'relative'
+          }}>
+          
             <div className="space-y-4">
               <h1 className="text-center text-2xl font-semibold text-white">
                 Register

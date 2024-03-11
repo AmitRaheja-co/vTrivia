@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "VTrivia.Controllers.QuizController",
+    "Method": "Create",
+    "RelativePath": "api/Quiz",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quiz",
+        "Type": "VTrivia.Model.Quiz",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.QuizController",
+    "Method": "GetQuesFromQuizId",
+    "RelativePath": "api/Quiz/GetQues",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "grp",
+        "Type": "VTrivia.Model.input",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensionsCust\u002B\u003C\u003Ec__1\u00601[[Microsoft.AspNetCore.Identity.IdentityUser, Microsoft.Extensions.Identity.Stores, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
     "Method": "\u003CMapIdentityApiCust\u003Eb__1_3",
     "RelativePath": "confirmEmail",
@@ -71,6 +103,64 @@
       {
         "Name": "group",
         "Type": "VTrivia.Model.Group",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.GroupController",
+    "Method": "GetGroups",
+    "RelativePath": "Group",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.GroupController",
+    "Method": "getInfoOfAGroup",
+    "RelativePath": "Group/GetInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "grp",
+        "Type": "VTrivia.Model.input",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.GroupController",
+    "Method": "GetallUsers",
+    "RelativePath": "Group/GetUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.GroupController",
+    "Method": "JoinGroup",
+    "RelativePath": "Group/Join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "grp",
+        "Type": "VTrivia.Model.input",
         "IsRequired": true
       }
     ],
@@ -211,6 +301,22 @@
         "StatusCode": 404
       }
     ]
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.QueController",
+    "Method": "Create",
+    "RelativePath": "Que",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "que",
+        "Type": "VTrivia.Model.Que",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensionsCust\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[Microsoft.AspNetCore.Identity.IdentityUser, Microsoft.Extensions.Identity.Stores, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",

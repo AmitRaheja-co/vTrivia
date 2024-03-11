@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import groupIcon from "../../assets/QuizLogo.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const ProfileCard = ({ Id, key, Title, Designation }) => {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ const ProfileCard = ({ Id, key, Title, Designation }) => {
         )
         .then((response) => {
           console.log(response.data);
-          //navigate("/GroupDashboard", { state: { props: response.data } });
+          navigate("/GroupDashboard", { state: { props: response.data } });
         })
         .catch((error) => {
           console.log(error);
@@ -88,6 +89,7 @@ const ProfileCard = ({ Id, key, Title, Designation }) => {
   return (
     <div className="mt-5 ml-3 max-w-60 max-h-96 rounded-3xl overflow-hidden shadow-md">
       <img
+        className="image-icon"
         src={groupIcon}
         alt="group-icon"
         style={{ maxWidth: "100%", maxHeight: "100%" }}

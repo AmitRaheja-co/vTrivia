@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import groupIcon from "../../../assets/QuizLogo.png";
 import AttemptQuizModal from "./AttemptQuizModal";
-
+import "./Style.css";
 const QuizCard = ({ name ,Id}) => {
   const [attemptQuiz, setAttemptQuiz] = useState(false);
 
@@ -19,6 +19,7 @@ const QuizCard = ({ name ,Id}) => {
       onClick={openAttemptQuizModal}
     >
       <img
+      className="image-icon"
         src={groupIcon}
         alt="group-icon"
         style={{ maxWidth: "100%", maxHeight: "100%" }}

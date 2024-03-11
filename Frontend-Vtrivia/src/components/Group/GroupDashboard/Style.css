@@ -1,0 +1,31 @@
+.option-label {
+    display: flex;
+  }
+  
+  .option-tab {
+    background-color: #0000004f;
+    border: 1px solid #000000;
+    width: 100%;
+    border-radius: 15px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option-tab.selected {
+    background-color: rgb(0, 70, 128); /* You can use any green color you prefer */
+    color: white;
+  }
+  
+  .option-tab.wrong-answer {
+    background-color: red;
+    color: white;
+  }
+  
+  .option-tab.correct-answer {
+    background-color: green;
+    color: white;
+  }
+  .image-icon:hover{
+    border-radius: 2px solid blue;
+  }
