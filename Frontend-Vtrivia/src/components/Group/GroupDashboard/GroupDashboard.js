@@ -25,7 +25,31 @@ const GroupDashboard = () => {
   // console.log(membersUsername);
   // console.log(allUsername);
   //console.log()
-
+  var currentQuizzes= [],pastQuizzes= [],futureQuizzes = [];
+  const currentTime = new Date();
+  quizs.map(
+    (quiz) =>{
+      if (new Date(quiz.startTimeStamp).getTime() + quiz.timeWindow * 60000 <
+      currentTime.getTime()) {
+        pastQuizzes.push(quiz);
+      }
+      else if (new Date(quiz.startTimeStamp).getTime() >
+      currentTime.getTime() + quiz.timeWindow * 60000) {
+        futureQuizzes.push(quiz);
+      }
+      else{
+        currentQuizzes.push(quiz);
+      }
+    }
+  );
+    console.log("all quiz");
+    console.log(quizs);
+    console.log("current");
+    console.log(currentQuizzes);
+    console.log("past");
+    console.log(pastQuizzes);
+    console.log("future");
+    console.log(futureQuizzes);
   const openCreateQuizModal = () => {
     setCreateQuizModal(true);
   };
@@ -46,7 +70,7 @@ const GroupDashboard = () => {
     <>
       <div className="bg-blue-300" style={{
         width:'100%',
-        height:'100vh'
+        height:'100%'
       }}>
         <nav className="bg-sky-600">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -95,14 +119,42 @@ const GroupDashboard = () => {
           </div>
 
         </nav>
-
-        {/* Container for QuizCards with Flexbox */}
+        {/* <div>
         <div className="flex flex-wrap">
           {quizs.map((quiz) => (
             <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} />
-            // {console.log(quiz.id);}
+            ))}
+        </div>
+      </div> */}
+         {/* Current Contests */}
+      <div>
+        <h2>Current Contests</h2>
+        <div className="flex flex-wrap">
+          {currentQuizzes.map((quiz) => (
+            <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {2} />
           ))}
         </div>
+      </div>
+
+
+      {/* Future Contests */}
+      <div>
+        <h2>Future Contests</h2>
+        <div className="flex flex-wrap">
+          {futureQuizzes.map((quiz) => (
+            <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {1} />
+          ))}
+        </div>
+      </div>
+      {/* Past Contests */}
+      <div>
+        <h2>Past Contests</h2>
+        <div className="flex flex-wrap">
+          {pastQuizzes.map((quiz) => (
+            <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {0} />
+          ))}
+        </div>
+      </div>
       </div>
     </>
   );
