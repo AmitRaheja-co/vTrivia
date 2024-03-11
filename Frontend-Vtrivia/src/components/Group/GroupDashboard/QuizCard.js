@@ -17,9 +17,9 @@ const QuizCard = ({ name, Id, time }) => {
 
   return (
     <div
-      className={`mt-5 ml-3 mx-5 max-w-60 max-h-96 rounded-3xl overflow-hidden shadow-md ${time === 0 || time === 1 ? 'unclickable-card' : ''}`}
+      className={`mt-5 ml-3 mx-4 max-w-60 max-h-96 rounded-3xl overflow-hidden shadow-md ${time === 0 || time === 1 ? 'unclickable-card' : ''}`}
       onClick={openAttemptQuizModal}
-      style={{ opacity: time === 0 || time === 1 ? 0.5 : 1 }}
+      style={{ opacity: time === 0 || time === 1 ? 1 : 1 }}
     >
       <img
         className="image-icon"

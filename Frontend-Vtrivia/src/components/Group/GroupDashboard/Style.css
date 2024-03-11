@@ -29,3 +29,6 @@
   .image-icon:hover{
     border-radius: 2px solid blue;
   }
+  .unclickable-card img:hover{
+    cursor: not-allowed;
+  }

@@ -68,12 +68,12 @@ const GroupDashboard = () => {
 
   return (
     <>
-      <div className="bg-blue-300" style={{
+      <div className="bg-blue-300 relative" style={{
         width:'100%',
         height:'100%'
       }}>
-        <nav className="bg-sky-600">
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="sticky top-0 bg-sky-600">
+          <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a className="flex items-center space-x-3 rtl:space-x-reverse">
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 <a href="/">vTrivia</a>
@@ -128,10 +128,10 @@ const GroupDashboard = () => {
       </div> */}
          {/* Current Contests */}
       <div>
-        <h2>Current Contests</h2>
-        <div className="flex flex-wrap">
+        <h1 className="text-3xl my-2">Current Contests</h1>
+        <div className="grid col-span-5">
           <div
-            className={`flex w-full ${
+            className={`flex flex-wrap w-full col-span-1 ${
               showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
             }`}
           >
@@ -156,10 +156,10 @@ const GroupDashboard = () => {
 
       {/* Future Contests */}
       <div>
-        <h2>Future Contests</h2>
-        <div className="flex flex-wrap">
+        <h1 className="text-3xl my-2">Future Contests</h1>
+        <div className="grid col-span-5">
           <div
-            className={`flex w-full ${
+            className={`flex flex-wrap w-full col-span-1 ${
               showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
             }`}
           >
@@ -171,10 +171,10 @@ const GroupDashboard = () => {
       </div>
       {/* Past Contests */}
       <div>
-        <h2>Past Contests</h2>
-        <div className="flex flex-wrap">
+        <h1 className="text-3xl my-2">Past Contests</h1>
+        <div className="grid col-span-5">
           <div
-            className={`flex w-full ${
+            className={`flex flex-wrap w-full col-span-1 ${
               showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
             }`}
           >
