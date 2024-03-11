@@ -130,29 +130,58 @@ const GroupDashboard = () => {
       <div>
         <h2>Current Contests</h2>
         <div className="flex flex-wrap">
-          {currentQuizzes.map((quiz) => (
+          <div
+            className={`flex w-full ${
+              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+            }`}
+          >
+           {currentQuizzes.map((quiz) => (
             <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {2} />
           ))}
+          </div>
         </div>
       </div>
 
+      {/* <div className="flex flex-wrap">
+          <div
+            className={`flex w-full ${
+              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+            }`}
+          >
+           {pastQuizzes.map((quiz) => (
+            <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {0} />
+          ))}
+          </div>
+        </div> */}
 
       {/* Future Contests */}
       <div>
         <h2>Future Contests</h2>
         <div className="flex flex-wrap">
-          {futureQuizzes.map((quiz) => (
+          <div
+            className={`flex w-full ${
+              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+            }`}
+          >
+           {futureQuizzes.map((quiz) => (
             <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {1} />
           ))}
+          </div>
         </div>
       </div>
       {/* Past Contests */}
       <div>
         <h2>Past Contests</h2>
         <div className="flex flex-wrap">
-          {pastQuizzes.map((quiz) => (
+          <div
+            className={`flex w-full ${
+              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+            }`}
+          >
+           {pastQuizzes.map((quiz) => (
             <QuizCard key={quiz.id} Id={quiz.id} name={`quiz${quiz.id}`} time = {0} />
           ))}
+          </div>
         </div>
       </div>
       </div>

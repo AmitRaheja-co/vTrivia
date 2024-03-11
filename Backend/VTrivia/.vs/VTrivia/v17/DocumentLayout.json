@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\model\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:model\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Model\\AppUser.cs",
               "RelativeDocumentMoniker": "Model\\AppUser.cs",
@@ -94,12 +94,11 @@
               "RelativeToolTip": "Model\\AppUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T09:32:00.916Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-28T09:32:00.916Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -124,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GroupController.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\GroupController.cs",
               "RelativeDocumentMoniker": "Controllers\\GroupController.cs",
@@ -139,9 +138,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "VTrivia.csproj",
-              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\VTrivia.csproj",
+              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\VTrivia\\Backend\\VTrivia\\VTrivia.csproj",
               "RelativeDocumentMoniker": "VTrivia.csproj",
-              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\VTrivia.csproj",
+              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\VTrivia\\Backend\\VTrivia\\VTrivia.csproj",
               "RelativeToolTip": "VTrivia.csproj",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
