@@ -42,5 +42,13 @@ namespace VTrivia.Controllers
             allQuizQues= _queRepository.getQuestion(quizId).ToList();
             return Ok(allQuizQues);
         }
+        [HttpGet]
+        public IActionResult GetQuiz(int id)
+        {
+
+
+            Quiz ret = _quizRepository.Get(id);
+            return Ok(ret);
+        }
     }
 }

@@ -19,6 +19,7 @@ const GroupDashboard = () => {
   const allUsers = location.state?.props.all || [];
   const allUsername = allUsers.map((user) => user.userName);
   const quizs = props.quizs;
+  console.log(props);
   //console.log(props.curr_group.id);
 
 
@@ -112,8 +113,11 @@ const GroupDashboard = () => {
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Invite
-                  {showInviteSidebar && <SidebarAll allusers={allUsername} onClose={toggleInviteSidebar} />}
+
                 </button>
+                {showInviteSidebar && <SidebarAll allusers={allUsers} admin={props.curr_group.adminId} grpId={props.curr_group.id} onClose={toggleInviteSidebar} />}
+
+
               </div>
             </div>
           </div>
@@ -132,7 +136,7 @@ const GroupDashboard = () => {
         <div className="grid col-span-5">
           <div
             className={`flex flex-wrap w-full col-span-1 ${
-              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+              showMembersSidebar || showInviteSidebar ? "w-3/4" : ""
             }`}
           >
            {currentQuizzes.map((quiz) => (
@@ -160,7 +164,7 @@ const GroupDashboard = () => {
         <div className="grid col-span-5">
           <div
             className={`flex flex-wrap w-full col-span-1 ${
-              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+              showMembersSidebar || showInviteSidebar ? "w-3/4" : ""
             }`}
           >
            {futureQuizzes.map((quiz) => (
@@ -175,7 +179,7 @@ const GroupDashboard = () => {
         <div className="grid col-span-5">
           <div
             className={`flex flex-wrap w-full col-span-1 ${
-              showMembersSidebar || showInviteSidebar ? "w-8/12" : ""
+              showMembersSidebar || showInviteSidebar ? "w-3/4" : ""
             }`}
           >
            {pastQuizzes.map((quiz) => (

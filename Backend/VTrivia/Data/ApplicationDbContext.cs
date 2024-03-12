@@ -16,6 +16,7 @@ namespace VTrivia.Data
         DbSet<Group> Groups { get; set; }
         DbSet<Que> Ques { get; set; }
 
+        DbSet<Invite> invites { get; set; }
         DbSet<UserJoined> UserJoineds { get; set; }
         DbSet<QuizQues> QuizQues { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

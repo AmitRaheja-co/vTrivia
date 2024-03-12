@@ -47,6 +47,7 @@ builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQueRepository, QueRepository>();
 builder.Services.AddScoped<IUserJoinedRepository, UserJoinedRepository>();
 builder.Services.AddScoped<IQuizQuesRepository, QuizQuesRepository>();
+builder.Services.AddScoped<IInviteRepository, InviteRepository>();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

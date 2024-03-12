@@ -74,7 +74,7 @@ const CreateGroupModal = ({ isOpen, onClose,grpId }) => {
                   for=""
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  quizDuration
+                  TimeWindow
                 </label>
                 <input
                   type="number"
@@ -94,7 +94,7 @@ const CreateGroupModal = ({ isOpen, onClose,grpId }) => {
                   for=""
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  WindowTime
+                  quizDuration
                 </label>
                 <input
                   type="number"

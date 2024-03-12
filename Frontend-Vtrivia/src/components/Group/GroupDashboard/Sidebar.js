@@ -16,7 +16,7 @@ const Sidebar = ({ members,onClose }) => {
         </button>
       </div>
  
-      <h3 className="text-xl font-semibold mb-4">header</h3>
+      <h3 className="text-xl font-semibold mb-4">Members</h3>
  
       <ul>
         {members.map((name, index) => (
