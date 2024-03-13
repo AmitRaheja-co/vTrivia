@@ -45,7 +45,7 @@ const ProfileNavbar = ({Id}) => {
               />
 
               {/* Profile Icon */}
-              <div className="flex items-center md:order-0 space-x-3">
+              {/* <div className="flex items-center md:order-0 space-x-3">
                 <button
                   type="button"
                   className="text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-red-600"
@@ -53,7 +53,7 @@ const ProfileNavbar = ({Id}) => {
                 >
                   <div className="w-8 h-8 rounded-full"></div>
                 </button>
-              </div> 
+              </div>  */}
 
               {/* notification icon */}
               <div className="flex items-center md:order-0 space-x-3">

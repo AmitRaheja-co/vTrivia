@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,10 +55,6 @@
       "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:model\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|c:\\users\\dhruv\\documents\\.netdevelopment\\vtrivia\\backend\\vtrivia\\vtrivia.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{9B836DC8-D198-432C-8CE5-88A901E9D92C}|VTrivia.csproj|solutionrelative:vtrivia.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -82,20 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InviteController.cs",
-              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\InviteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\InviteController.cs",
-              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\InviteController.cs",
-              "RelativeToolTip": "Controllers\\InviteController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAwCkAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T12:38:08.792Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IInviteRepository.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Repository\\IRepository\\IInviteRepository.cs",
               "RelativeDocumentMoniker": "Repository\\IRepository\\IInviteRepository.cs",
@@ -103,12 +90,11 @@
               "RelativeToolTip": "Repository\\IRepository\\IInviteRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T12:21:26.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T12:21:26.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "InviteRepository.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Repository\\InviteRepository.cs",
               "RelativeDocumentMoniker": "Repository\\InviteRepository.cs",
@@ -116,12 +102,11 @@
               "RelativeToolTip": "Repository\\InviteRepository.cs",
               "ViewState": "AQIAACsAAAAAAAAAAAAqwDoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T12:20:16.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T12:20:16.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -133,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -145,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GroupRepository.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Repository\\GroupRepository.cs",
               "RelativeDocumentMoniker": "Repository\\GroupRepository.cs",
@@ -153,25 +138,49 @@
               "RelativeToolTip": "Repository\\GroupRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T18:13:32.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-28T18:13:32.477Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GroupController.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\GroupController.cs",
               "RelativeDocumentMoniker": "Controllers\\GroupController.cs",
               "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\GroupController.cs",
               "RelativeToolTip": "Controllers\\GroupController.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAH4AAAAQAAAA",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAAFQAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-28T09:47:18.743Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "EmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\EmailSender.cs",
+              "RelativeDocumentMoniker": "EmailSender.cs",
+              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\EmailSender.cs",
+              "RelativeToolTip": "EmailSender.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAABAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T07:56:19.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InviteController.cs",
+              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\InviteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InviteController.cs",
+              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\InviteController.cs",
+              "RelativeToolTip": "Controllers\\InviteController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAwCkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T12:38:08.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "QuizController.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Controllers\\QuizController.cs",
               "RelativeDocumentMoniker": "Controllers\\QuizController.cs",
@@ -183,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Invite.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Model\\Invite.cs",
               "RelativeDocumentMoniker": "Model\\Invite.cs",
@@ -195,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -207,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Model\\AppUser.cs",
               "RelativeDocumentMoniker": "Model\\AppUser.cs",
@@ -219,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IGroupRepository.cs",
               "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\Repository\\IRepository\\IGroupRepository.cs",
               "RelativeDocumentMoniker": "Repository\\IRepository\\IGroupRepository.cs",
@@ -252,18 +261,6 @@
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-02-28T18:14:58.494Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EmailSender.cs",
-              "DocumentMoniker": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\EmailSender.cs",
-              "RelativeDocumentMoniker": "EmailSender.cs",
-              "ToolTip": "C:\\Users\\dhruv\\Documents\\.NetDevelopment\\vTrivia\\Backend\\VTrivia\\EmailSender.cs",
-              "RelativeToolTip": "EmailSender.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAAAwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T07:56:19.586Z"
             },
             {
               "$type": "Document",

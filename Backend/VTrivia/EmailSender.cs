@@ -25,7 +25,7 @@ namespace VTrivia
             //        subject,
             //        htmlMessage
             //        ));
-             return Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }

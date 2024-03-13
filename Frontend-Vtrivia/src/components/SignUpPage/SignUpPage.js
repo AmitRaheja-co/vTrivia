@@ -3,15 +3,18 @@ import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import logo from "../../assets/Thundre-removebg-preview.png";
 import { useNavigate } from "react-router";
+import Loader from "../Loader/Loader";
  
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [username, setUsername] = useState("");
  
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true); // Show loader
     axios
         .post("https://localhost:7089/register", {
              email,
@@ -24,14 +27,21 @@ const SignUpPage = () => {
         .then((response) => {
             console.log("I am here");
             navigate('/Login');
+            setIsLoading(false); // Hide loader
         })
         .catch((error) => {
             console.error(error);
+            setIsLoading(false); // Hide loader
         });
 };
   return (
     <>
       <Navbar />
+      <section className="bg-sky-300 h-screen relative">
+        <Loader
+           isOpen={isLoading}
+            onClose={isLoading}
+        />
       <div className="h-screen bg-sky-300 flex justify-center items-center w-full">
         {/* <h1 className="text-3xl">Sign up to vTrivia</h1> */}
         <form onSubmit={handleSubmit}>
@@ -119,6 +129,7 @@ const SignUpPage = () => {
           </div>
         </form>
       </div>
+      </section>
     </>
   );
 };

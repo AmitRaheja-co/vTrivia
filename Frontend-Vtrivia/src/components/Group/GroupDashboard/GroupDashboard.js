@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import axios from "axios";
 import CreateQuizModal from "./CreateQuizModal";
 import QuizCard from "./QuizCard";
 import Sidebar from "./Sidebar";
 import SidebarAll from "./SidebarAll";
 
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 
 const GroupDashboard = () => {
   const [createQuizModal, setCreateQuizModal] = useState(false);
   const [showMembersSidebar, setShowMembersSidebar] = useState(false);
   const [showInviteSidebar, setShowInviteSidebar] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const props = location.state?.props;
   const currGroup = location.state?.props.curr_group;
   const members = location.state?.props.members || [];
@@ -19,6 +21,7 @@ const GroupDashboard = () => {
   const allUsers = location.state?.props.all || [];
   const allUsername = allUsers.map((user) => user.userName);
   const quizs = props.quizs;
+  const jwt = localStorage.getItem("jwt");
   console.log(props);
   //console.log(props.curr_group.id);
 
@@ -66,7 +69,25 @@ const GroupDashboard = () => {
   const toggleInviteSidebar = () => {
     setShowInviteSidebar(!showInviteSidebar);
   };
-
+  const postDataWithJWT = async ()  => {
+    //console.log(jwtToken);
+    await axios.get('https://localhost:7089/Group', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}` // Include the JWT token in the Authorization header
+      },
+    })
+    .then((response) => {
+    //  console.log('POST request successful:', response.data);
+    //alert(response.data);
+      navigate("/Dashboard", { state: { props: response.data } });
+      // Add any additional logic after successful submission
+    })
+    .catch((error) => {
+      console.error('Error submitting form:', error);
+      // Handle errors appropriately
+    });
+  };
   return (
     <>
       <div className="bg-blue-300 relative" style={{
@@ -75,11 +96,21 @@ const GroupDashboard = () => {
       }}>
         <nav className="sticky top-0 bg-sky-600">
           <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a className="flex items-center space-x-3 rtl:space-x-reverse">
+          <div className="flex">
+          
+            <a className="flex mr-5 items-center space-x-3 rtl:space-x-reverse">
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 <a href="/">vTrivia</a>
               </span>
             </a>
+            <button
+                  type="button"
+                  onClick={postDataWithJWT}
+                  className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                >
+                  Dashboard
+                </button>
+            </div>
             <div
               className="hidden w-full md:block md:w-auto"
               id="navbar-default"

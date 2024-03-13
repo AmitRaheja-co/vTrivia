@@ -45,32 +45,28 @@ namespace VTrivia.Controllers
         }
         [HttpGet]
         [Authorize]
-        public IActionResult GetGroups() {
+        public IActionResult GetGroups()
+        {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userName = _appUserRepository.Get(userId);
             IEnumerable<UserJoined> all_groups_mapping = _userJoinedRepository.GetAll();
             List<Group> groups_joined = new List<Group>();
             List<Group> public_groups = new List<Group>();
+            HashSet<int> uniqueGroup = new HashSet<int>();
             foreach (var item in all_groups_mapping)
             {
                 Group curr = _groupRepository.Get((int)item.GroupId);
                 if (item.UserId == userId)
                 {
-                    bool chk = false;
-                    foreach(var j in groups_joined)
-                    {
-                        if (j == curr)
-                        {
-                            chk = true;
-                        }
-                    }
-                    if (!chk)
-                    {
-                        groups_joined.Add(curr);
-                    }
+                    uniqueGroup.Add(curr.Id);
                 }
             }
-            foreach(var item in all_groups_mapping)
+            foreach (var item in uniqueGroup)
+            {
+                groups_joined.Add(_groupRepository.Get(item));
+            }
+            uniqueGroup = new HashSet<int>();
+            foreach (var item in all_groups_mapping)
             {
                 Group curr = _groupRepository.Get((int)item.GroupId);
                 bool chk = false;
@@ -83,23 +79,15 @@ namespace VTrivia.Controllers
                 }
                 if (!chk)
                 {
-                    bool chk1 = false;
-                    foreach (var j in public_groups)
-                    {
-                        if (j == curr)
-                        {
-                            chk1 = true;
-                        }
-                    }
-                    if (!chk1)
-                    {
-                        public_groups.Add(curr);
-                    }
+                    uniqueGroup.Add(curr.Id);
                 }
             }
+            foreach (var item in uniqueGroup)
+            {
+                public_groups.Add(_groupRepository.Get(item));
+            }
 
-
-            return Ok(new { userId,userName,groups_joined,public_groups});
+            return Ok(new { userId, userName, groups_joined, public_groups });
             //return Ok("bhad me jao");
         }
         [Authorize]

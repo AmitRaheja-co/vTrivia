@@ -4,42 +4,37 @@ import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import logo from "../../assets/Thundre-removebg-preview.png";
 import { useNavigate } from "react-router-dom";
- 
- 
- 
+import Loader from "../Loader/Loader";
+
 const LoginPage = () => {
- 
-  const postDataWithJWT = async (jwtToken ) => {
-    console.log(jwtToken);
-    await axios.get('https://localhost:7089/Group', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwtToken}` // Include the JWT token in the Authorization header
-      },
-    })
-    .then((response) => {
-    //  console.log('POST request successful:', response.data);
-    //alert(response.data);
-      navigate("/Dashboard", { state: { props: response.data } });
-      // Add any additional logic after successful submission
-    })
-    .catch((error) => {
-      console.error('Error submitting form:', error);
-      // Handle errors appropriately
-    });
-  };
- 
- 
- 
- 
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
- 
+
+  const postDataWithJWT = async (jwtToken) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get('https://localhost:7089/Group', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwtToken}`
+        },
+      });
+      setIsLoading(false);
+      navigate("/Dashboard", { state: { props: response.data } });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsLoading(false);
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios
-      .post(
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
         "https://localhost:7089/login",
         {
           email,
@@ -52,46 +47,42 @@ const LoginPage = () => {
             "Content-Type": "application/json",
           },
         }
-      )
-      .then((response) => {
-       // console.log("DONE");
-        const bearerToken = response.data.accessToken;
-        localStorage.setItem('jwt',bearerToken);
-        // console.log(response);
-       
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      // console.log("above testing");
-      // console.log(localStorage.getItem('jwt'));
-      // console.log("below testing");
- 
-     await postDataWithJWT(localStorage.getItem('jwt'));
-     
- 
+      );
+      const bearerToken = response.data.accessToken;
+      localStorage.setItem('jwt', bearerToken);
+      setIsLoading(false);
+      await postDataWithJWT(localStorage.getItem('jwt'));
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
+
   return (
     <>
+    <div style={{
+      overflowY:'hidden'
+    }}>
       <Navbar />
-      <section className="bg-sky-300 h-screen w-screen">
-      <img src={logo} style={{
-         position: 'absolute',
-    top: '40px', /* Adjust to position the image behind the div */
-    left: '40%', /* Adjust to position the image behind the div */
-    width: '', /* Make the image slightly larger than the container */
-    height: 'calc(100% + 20px)',
-    transform:'rotate(20deg)', /* Make the image slightly larger than the container */
-   zIndex:0
-      }}/>
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0" style={{
-          position:'relative'
-        }}>
-       
-          <a
-            href="/"
-            className="flex items-center mb-6 text-2xl font-semibold text-blue-500 dark:text-"
-          >
+      <section className="bg-sky-300 h-screen relative">
+        <Loader
+           isOpen={isLoading}
+            onClose={isLoading}
+        />
+        <img
+          src={logo}
+          style={{
+            position: 'absolute',
+            top: '40px',
+            left: '40%',
+            width: '',
+            height: 'calc(100% + 20px)',
+            transform: 'rotate(20deg)',
+            zIndex: 0
+          }}
+        />
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0" style={{ position: 'relative' }}>
+          <a href="/" className="flex items-center mb-6 text-2xl font-semibold text-blue-500 dark:text-">
             Login to vTrivia
           </a>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-blue-500 dark:border-gray-700">
@@ -99,16 +90,9 @@ const LoginPage = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 md:space-y-6"
-                action="/"
-              >
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" action="/">
                 <div>
-                  <label
-                    for="email"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Your email
                   </label>
                   <input
@@ -122,10 +106,7 @@ const LoginPage = () => {
                   />
                 </div>
                 <div>
-                  <label
-                    for="password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Password
                   </label>
                   <input
@@ -140,10 +121,7 @@ const LoginPage = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-start"></div>
-                  <a
-                    href="/"
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
+                  <a href="/" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
                     <a href="/ForgetPassword">Forget Password?</a>
                   </a>
                 </div>
@@ -155,10 +133,7 @@ const LoginPage = () => {
                 </button>
                 <p className="text-sm font-medium text-gray-900 dark:text-white">
                   Don't have an account yet?{" "}
-                  <a
-                    href="/"
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
+                  <a href="/" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                     <a href="/SignUp">Sign up</a>
                   </a>
                 </p>
@@ -167,8 +142,9 @@ const LoginPage = () => {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 };
- 
+
 export default LoginPage;
