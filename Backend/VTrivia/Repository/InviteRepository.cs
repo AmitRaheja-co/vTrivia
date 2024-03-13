@@ -29,10 +29,10 @@ namespace VTrivia.Repository
             return db.Query<Invite>(sql, new { id }).Single();
         }
 
-        public Invite GetInvite(string id)
+        public IEnumerable<Invite> GetInvite(string id)
         {
-            var sql = "SELECT * FROM invites WHERE InvitedUserId = id";
-            return db.Query<Invite>(sql, new { id }).Single();
+            var sql = "SELECT * FROM invites WHERE InvitedUserId = @id";
+            return db.Query<Invite>(sql, new { id });
         }
 
         public IEnumerable<Invite> GetAll()

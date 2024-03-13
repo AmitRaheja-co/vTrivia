@@ -17,7 +17,9 @@ const ProfileDashboard = () => {
   return (
     <>
       <div className="bg-blue-300 h-screen w-screen">
-        <ProfileNavbar />
+        <ProfileNavbar
+        Id={userId}
+         />
         <p className="text-2xl ml-3 my-2">Joined by {username}</p>
         <div className="flex mt-5">
           {groupsJoined.map((group) => {

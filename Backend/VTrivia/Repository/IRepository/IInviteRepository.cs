@@ -6,7 +6,7 @@ namespace VTrivia.Repository.IRepository
     public interface IInviteRepository
     {
         IEnumerable<Invite> GetAll();
-        Invite GetInvite(string id);
+        IEnumerable<Invite> GetInvite(string id);
 
         
         Invite Add(Invite entity);

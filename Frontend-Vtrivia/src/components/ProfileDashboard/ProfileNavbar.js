@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import CreateGroupModal from "./CreateGroupModal";
+import NotificationModal from "./NotificationModal";
 
-const ProfileNavbar = () => {
+const ProfileNavbar = ({Id}) => {
   const [isCreateGroupModalOpen, setCreateGroupModalOpen] = useState(false);
+  const [isNotificationModalOPen, setNotificationModalOpen] = useState(false);
 
   const openCreateGroupModal = () => {
     setCreateGroupModalOpen(true);
@@ -10,6 +12,13 @@ const ProfileNavbar = () => {
 
   const closeCreateGroupModal = () => {
     setCreateGroupModalOpen(false);
+  };
+  const openNotificationModal = () => {
+    setNotificationModalOpen(true);
+  };
+
+  const closeNotificationModal = () => {
+    setNotificationModalOpen(false);
   };
   return (
     <>
@@ -44,17 +53,23 @@ const ProfileNavbar = () => {
                 >
                   <div className="w-8 h-8 rounded-full"></div>
                 </button>
-              </div>
+              </div> 
 
               {/* notification icon */}
               <div className="flex items-center md:order-0 space-x-3">
                 <button
                   type="button"
+                  onClick={openNotificationModal}
                   className="text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-yellow-500"
                   id="user-menu-button"
                 >
                   <div className="w-8 h-8 rounded-lg"></div>
                 </button>
+                <NotificationModal
+                Id={Id}
+                isOpen={isNotificationModalOPen}
+                onClose={closeNotificationModal}
+              />
               </div>
 
               {/* Log Out button */}

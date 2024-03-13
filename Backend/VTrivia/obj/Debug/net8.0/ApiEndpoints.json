@@ -16,6 +16,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "VTrivia.Controllers.InviteController",
+    "Method": "GetInvite",
+    "RelativePath": "api/Invite",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VTrivia.Controllers.InviteController",
+    "Method": "DeleteInvite",
+    "RelativePath": "api/Invite",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VTrivia.Controllers.QuizController",
     "Method": "Create",
     "RelativePath": "api/Quiz",

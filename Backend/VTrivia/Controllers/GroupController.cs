@@ -112,11 +112,28 @@ namespace VTrivia.Controllers
             Group curr_group = _groupRepository.Get(grpId);
             List<AppUser> members = new List<AppUser>();
             List<AppUser> all = new List<AppUser>();
-            all = _appUserRepository.GetAll().ToList();
+            //all = _appUserRepository.GetAll().ToList();
+            Dictionary<string, int> dict = new Dictionary<string, int>();
             foreach (var user in _userJoinedRepository.GetMembers(grpId).ToList())
             {
-
+                
                 members.Add(_appUserRepository.Get(user.UserId));
+                Console.WriteLine(user.UserId);
+                dict[user.UserId] = 1;
+            }
+            Console.WriteLine("hi");
+            foreach(var user in _appUserRepository.GetAll().ToList())
+            {
+                
+                if (!dict.ContainsKey(user.Id))
+                {
+                    Console.WriteLine(user.Id);
+                    all.Add(user);
+                }
+                else
+                {
+                    Console.WriteLine(user.Id);
+                }
             }
             List<Quiz> quizs = new List<Quiz>();
             quizs = _quizRepository.GetQuizGroup(grpId).ToList();
