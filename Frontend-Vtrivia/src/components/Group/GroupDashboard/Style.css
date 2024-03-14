@@ -32,3 +32,13 @@
   .unclickable-card img:hover{
     cursor: not-allowed;
   } 
+
+ /* .members{
+  right: 0;
+  //transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-in-out; 
+ }
+ .members{
+  transform: translate(calc(50% + 10px), -50%);
+} */
+
