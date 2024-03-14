@@ -9,23 +9,23 @@ namespace VTrivia
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            //var mail = "vTrivia0730@outlook.com";
-            //var pw = "Dhruv@123";
+            var mail = "vtriviagrp7@outlook.com";
+            var pw = "Group7@2K24";
 
-            //var client = new SmtpClient("smtp-mail.outlook.com", 587)
-            //{
-            //    EnableSsl = true,
-            //    Credentials = new NetworkCredential(mail, pw)
-            //};
+            var client = new SmtpClient("smtp-mail.outlook.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential(mail, pw)
+            };
 
-            //return client.SendMailAsync(
-            //    new MailMessage(
-            //        from: mail,
-            //        to: email,
-            //        subject,
-            //        htmlMessage
-            //        ));
-            return Task.CompletedTask;
+            return client.SendMailAsync(
+                new MailMessage(
+                    from: mail,
+                    to: email,
+                    subject,
+                    htmlMessage
+                    ));
+            //return Task.CompletedTask;
         }
     }
 }
