@@ -1,6 +1,10 @@
 import React from "react";
 import HomeNav from "./HomeNav";
 import logo from "../../assets/QuizLogo.png";
+import AryanSanghi from '../../assets/AryanSanghi.jpg';
+import AmitRaheja from '../../assets/AmitRaheja.jpg';
+import DhruvMathur from '../../assets/DhruvMathur.jpg';
+import DeeptiKhatri from '../../assets/DeeptiKhatri.jpeg';
 import FriendCard from "./FriendCard";
 import Carousel from "./Carousel";
 
@@ -76,24 +80,28 @@ const HomePage = () => {
       </div>
       <div className="grid grid-cols-4">
         <FriendCard
+          photo={DeeptiKhatri}
           friendName="Deepti"
           Role="Business Analyst"
-          Github="abc"
-          Linkedin="abc"
+          Github="https://github.com/deepti542002"
+          Linkedin="https://www.linkedin.com/in/deepti-khatri-90741520b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
         />
         <FriendCard
+          photo={AryanSanghi}
           friendName="Aryan"
           Role="Frontend Engineer"
           Github="https://github.com/Aryan-Sanghi-008"
           Linkedin="https://www.linkedin.com/in/aryansanghi008/"
         />
         <FriendCard
+          photo={DhruvMathur}
           friendName="Dhruv Mathur"
           Role="Backend Engineer (.NET)"
           Github="https://github.com/dhruvmathur2003"
           Linkedin="https://www.linkedin.com/in/dhruv-mathur-8a3404209?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
         />
         <FriendCard
+          photo={AmitRaheja}
           friendName="Amit Raheja"
           Role="Backend Engineer (.NET)"
           Github="https://github.com/AmitRaheja-co"

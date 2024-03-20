@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect,useRef} from "react";
 import axios from "axios";
 import CreateQuizModal from "./CreateQuizModal";
 import QuizCard from "./QuizCard";
 import Sidebar from "./Sidebar";
 import SidebarAll from "./SidebarAll";
-
+ 
 import { useLocation,useNavigate } from "react-router-dom";
-
+ 
 const GroupDashboard = () => {
   const [createQuizModal, setCreateQuizModal] = useState(false);
   const [showMembersSidebar, setShowMembersSidebar] = useState(false);
@@ -24,8 +24,8 @@ const GroupDashboard = () => {
   const jwt = localStorage.getItem("jwt");
   console.log(props);
   //console.log(props.curr_group.id);
-
-
+ 
+ 
   // console.log(membersUsername);
   // console.log(allUsername);
   //console.log()
@@ -57,16 +57,16 @@ const GroupDashboard = () => {
   const openCreateQuizModal = () => {
     setCreateQuizModal(true);
   };
-
+ 
   const closeCreateQuizModal = () => {
     setCreateQuizModal(false);
   };
-
+ 
   const toggleMembersSidebar = () => {
     setShowMembersSidebar(!showMembersSidebar);
     setShowInviteSidebar(false);
   };
-
+ 
   const toggleInviteSidebar = () => {
     setShowInviteSidebar(!showInviteSidebar);
     setShowMembersSidebar(false);
@@ -90,16 +90,30 @@ const GroupDashboard = () => {
       // Handle errors appropriately
     });
   };
+  const [parentHeight, setParentHeight] = useState('100%');
+  const childRef = useRef(null);
+ 
+  useEffect(() => {
+    const childHeight = childRef.current.clientHeight;
+    const windowHeight = window.innerHeight;
+ 
+    if (childHeight < windowHeight) {
+      setParentHeight('100vh'); // Child is smaller, set parent height to viewport height
+    } else {
+      setParentHeight('100%'); // Child is larger, set parent height to 100% of its container
+    }
+  }, []);
   return (
     <>
       <div className="bg-blue-300 relative" style={{
         width:'100%',
-        height:'100%'
+        height: parentHeight
       }}>
+      <div  ref={childRef}>
         <nav className="sticky top-0 bg-sky-600">
           <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex">
-          
+         
             <a className="flex mr-5 items-center space-x-3 rtl:space-x-reverse">
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 <a href="/">vTrivia</a>
@@ -138,21 +152,21 @@ const GroupDashboard = () => {
                 >
                   Members
                 </button>
-
+ 
                 <button
                   type="button"
                   onClick={toggleInviteSidebar}
                   className="my-3 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Invite
-
+ 
                 </button>
                 {showMembersSidebar && <Sidebar members={membersUsername} onClose={toggleMembersSidebar} />}
                 {showInviteSidebar && <SidebarAll allusers={allUsers} admin={props.curr_group.adminId} grpId={props.curr_group.id} onClose={toggleInviteSidebar} />}
               </div>
             </div>
           </div>
-
+ 
         </nav>
         {/* <div>
         <div className="flex flex-wrap">
@@ -176,7 +190,7 @@ const GroupDashboard = () => {
           </div>
         </div>
       </div>
-
+ 
       {/* <div className="flex flex-wrap">
           <div
             className={`flex w-full ${
@@ -188,7 +202,7 @@ const GroupDashboard = () => {
           ))}
           </div>
         </div> */}
-
+ 
       {/* Future Contests */}
       <div>
         <h1 className="text-3xl my-2">Future Contests</h1>
@@ -220,8 +234,9 @@ const GroupDashboard = () => {
         </div>
       </div>
       </div>
+      </div>
     </>
   );
 };
-
+ 
 export default GroupDashboard;
