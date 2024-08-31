@@ -4,7 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const InviteModal = ({ grpId,admin,id,name,isOpen, onClose }) => {
+const InviteModal = ({ grpId, admin, id, name, isOpen, onClose }) =>
+{
   const [scheduleTime, setScheduleTime] = useState("");
   const [quizDuration, setQuizDuration] = useState("");
   const [windowTime, setWindowTime] = useState("");
@@ -13,27 +14,30 @@ const InviteModal = ({ grpId,admin,id,name,isOpen, onClose }) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>
+  {
     e.preventDefault();
 
     const postData = {
-        adminId:admin,
-        invitedUserId:id,
-        groupId:grpId
+      adminId: admin,
+      invitedUserId: id,
+      groupId: grpId
     };
 
     axios
-      .post("https://localhost:7089/api/Invite", postData, {
+      .post("http://localhost:5275/api/Invite", postData, {
         headers: {
           "Content-Type": "application/json",
         }
       })
-      .then((response) => {
+      .then((response) =>
+      {
         console.log("Post request response:", response.data);
         toast.success("Invitation Sent");
         //navigate('/CreateQuiz',{ state: { props: response.data } });
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.error("Post request error:", error);
       });
     onClose();
@@ -52,8 +56,8 @@ const InviteModal = ({ grpId,admin,id,name,isOpen, onClose }) => {
               className="space-y-4 md:space-y-6"
               action="/"
             >
-              
-            
+
+
               <h1>Send an invite to {name} to join this group as a member and attemot the quiz</h1>
               <button
                 onClick={handleSubmit}

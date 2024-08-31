@@ -3,36 +3,40 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateGroupModal = ({ isOpen, onClose,grpId }) => {
+const CreateGroupModal = ({ isOpen, onClose, grpId }) =>
+{
   const [scheduleTime, setScheduleTime] = useState("");
   const [quizDuration, setQuizDuration] = useState("");
   const [windowTime, setWindowTime] = useState("");
 
-  console.log("DNE"+ grpId);
+  console.log("DNE" + grpId);
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>
+  {
     e.preventDefault();
 
     const postData = {
-        startTimeStamp:scheduleTime,
-      quizDuration:parseInt(quizDuration),
-      timeWindow:parseInt(windowTime),
-      groupId:grpId
+      startTimeStamp: scheduleTime,
+      quizDuration: parseInt(quizDuration),
+      timeWindow: parseInt(windowTime),
+      groupId: grpId
     };
 
     axios
-      .post("https://localhost:7089/api/Quiz", postData, {
+      .post("http://localhost:5275/api/Quiz", postData, {
         headers: {
           "Content-Type": "application/json",
         }
       })
-      .then((response) => {
+      .then((response) =>
+      {
         console.log("Post request response:", response.data);
-        navigate('/CreateQuiz',{ state: { props: response.data } });
+        navigate('/CreateQuiz', { state: { props: response.data } });
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.error("Post request error:", error);
       });
     onClose();

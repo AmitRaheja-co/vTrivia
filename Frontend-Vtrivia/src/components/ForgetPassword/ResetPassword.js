@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
-const ResetPassword = () => {
+const ResetPassword = () =>
+{
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [resetCode, setResetCode] = useState("");
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) =>
+  {
     event.preventDefault();
-    if (newPassword === confirmPassword) {
+    if (newPassword === confirmPassword)
+    {
       axios
         .post(
-          "https://localhost:7089/resetPassword",
+          "http://localhost:5275/resetPassword",
           {
             email,
             newPassword,
@@ -27,15 +30,18 @@ const ResetPassword = () => {
             },
           }
         )
-        .then((response) => {
+        .then((response) =>
+        {
           console.log(response);
           toast.success("Your password has been changed");
           navigate("/Login");
         })
-        .catch((error) => {
+        .catch((error) =>
+        {
           console.log(error);
         });
-    } else {
+    } else
+    {
       toast.error('passwords did not match');
     }
   };
@@ -64,7 +70,7 @@ const ResetPassword = () => {
                   placeholder="FullName@domain.com"
                   required=""
                   onChange={(e) => setEmail(e.target.value)}
-                  
+
                 />
               </div>
               <div>
@@ -101,7 +107,7 @@ const ResetPassword = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-               <div>
+              <div>
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

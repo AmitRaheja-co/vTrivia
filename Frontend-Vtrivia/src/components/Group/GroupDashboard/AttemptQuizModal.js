@@ -3,9 +3,11 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AttemptQuizModal = ({ isOpen, onClose ,quizId}) => {
+const AttemptQuizModal = ({ isOpen, onClose, quizId }) =>
+{
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>
+  {
     e.preventDefault();
 
     const postData = {
@@ -13,16 +15,18 @@ const AttemptQuizModal = ({ isOpen, onClose ,quizId}) => {
     };
     //alert(quizId);
     axios
-      .post("https://localhost:7089/api/Quiz/GetQues", postData, {
+      .post("http://localhost:5275/api/Quiz/GetQues", postData, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((response) => {
+      .then((response) =>
+      {
         console.log("Post request response:", response.data);
         navigate("/StartQuiz", { state: { props: response.data } });
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.error("Post request error:", error);
       });
     onClose();

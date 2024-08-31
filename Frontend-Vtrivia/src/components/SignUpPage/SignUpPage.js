@@ -5,19 +5,21 @@ import logo from "../../assets/Thundre-removebg-preview.png";
 import { useNavigate } from "react-router";
 import Loader from "../Loader/Loader";
 
-const SignUpPage = () => {
+const SignUpPage = () =>
+{
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [username, setUsername] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) =>
+  {
     event.preventDefault();
     setIsLoading(true); // Show loader
     axios
       .post(
-        "https://localhost:7089/register",
+        "http://localhost:5275/register",
         {
           email,
           password,
@@ -28,12 +30,14 @@ const SignUpPage = () => {
           },
         }
       )
-      .then((response) => {
+      .then((response) =>
+      {
         console.log("I am here");
         navigate("/Login");
         setIsLoading(false); // Hide loader
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.error(error);
         setIsLoading(false); // Hide loader
       });

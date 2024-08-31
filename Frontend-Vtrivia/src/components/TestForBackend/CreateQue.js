@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function CreateQue() {
+function CreateQue()
+{
     const [problemStatement, setProblemStatement] = useState('');
     const [options, setOptions] = useState(['', '', '', '']);
     const [answer, setAnswer] = useState('');
 
-    const handleOptionChange = (index, value) => {
+    const handleOptionChange = (index, value) =>
+    {
         const newOptions = [...options];
         newOptions[index] = value;
         setOptions(newOptions);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event) =>
+    {
         event.preventDefault();
         // Handle form submission (e.g., send data to backend)
-        axios.post('https://localhost:7089/api/Quiz', {}, {
+        axios.post('http://localhost:5275/api/Quiz', {}, {
             headers: {
                 "Content-Type": "application/json",
             },
         })
-            .then(response => {
+            .then(response =>
+            {
                 console.log('POST request successful:', response.data);
                 // Add any additional logic after successful submission
             })
-            .catch(error => {
+            .catch(error =>
+            {
                 console.error('Error submitting form:', error);
                 // Handle errors appropriately
             });

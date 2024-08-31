@@ -1,5 +1,4 @@
 import React from "react";
-import signUp from "../../assets/enter.png";
 const HomeNav = () => {
   return (
     <>

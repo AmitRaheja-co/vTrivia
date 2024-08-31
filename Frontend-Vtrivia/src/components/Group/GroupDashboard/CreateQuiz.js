@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const CreateQuiz = () => {
+const CreateQuiz = () =>
+{
   const location = useLocation();
   const props = location.state?.props;
   const grpId = props.quiz.groupId;
@@ -19,17 +20,20 @@ const CreateQuiz = () => {
 
   const navigate = useNavigate();
 
-  const addQuestion = () => {
+  const addQuestion = () =>
+  {
     setQuestions([
       ...questions,
       { statement: "", options: ["", "", "", ""], answer: "" },
     ]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) =>
+  {
     event.preventDefault();
 
-    const formattedQuestions = questions.map((question) => {
+    const formattedQuestions = questions.map((question) =>
+    {
       const { statement, options, answer } = question;
       return {
         statement,
@@ -44,7 +48,7 @@ const CreateQuiz = () => {
     const lastQuestion = formattedQuestions[formattedQuestions.length - 1];
 
     axios.post(
-      "https://localhost:7089/Que",
+      "http://localhost:5275/Que",
       {
         statement: lastQuestion.statement,
         option1: lastQuestion.option1,
@@ -52,34 +56,38 @@ const CreateQuiz = () => {
         option3: lastQuestion.option3,
         option4: lastQuestion.option4,
         answer: lastQuestion.answer,
-        quizId:props.quiz.id
+        quizId: props.quiz.id
       },
       {
-       
+
         headers: {
           "Content-Type": "application/json"
         }
       }
     )
-    .then((response) => {
-      console.log("DONE");
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
-    setTimeout(() => {
+      .then((response) =>
+      {
+        console.log("DONE");
+        console.log(response);
+      })
+      .catch((error) =>
+      {
+        console.log(error);
+      });
+
+    setTimeout(() =>
+    {
       addQuestion();
     }, 500);
-  }    
+  }
 
-  const handleSub = (event) => {
+  const handleSub = (event) =>
+  {
     event.preventDefault();
     console.log(grpId);
     axios
       .post(
-        "https://localhost:7089/Group/GetInfo",
+        "http://localhost:5275/Group/GetInfo",
         {
           grpId: grpId
         },
@@ -91,22 +99,27 @@ const CreateQuiz = () => {
           },
         }
       )
-      .then((response) => {
+      .then((response) =>
+      {
         console.log(response.data);
         navigate('/GroupDashboard', { state: { props: response.data } });
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.log(error);
       });
   };
 
 
-  const handleInputChange = (index, field, value) => {
+  const handleInputChange = (index, field, value) =>
+  {
     const updatedQuestions = [...questions];
-    if (field === "options") {
+    if (field === "options")
+    {
       updatedQuestions[index][field][value.target.dataset.index] =
         value.target.value;
-    } else {
+    } else
+    {
       updatedQuestions[index][field] = value.target.value;
     }
     setQuestions(updatedQuestions);

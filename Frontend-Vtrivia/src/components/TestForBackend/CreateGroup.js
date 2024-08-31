@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 
-function CreateGroupPopup({ onClose }) {
+function CreateGroupPopup({ onClose })
+{
     const [groupTitle, setGroupTitle] = useState('');
     const [groupDescription, setGroupDescription] = useState('');
     const jwt = localStorage.getItem("jwt");
     console.log("DONE");
     console.log(jwt);
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) =>
+    {
         e.preventDefault();
 
         // Dummy data for post request
@@ -17,21 +19,23 @@ function CreateGroupPopup({ onClose }) {
         };
 
         // Dummy Axios post request
-        axios.post('https://localhost:7089/Group', postData,
-        {
-            headers: {
-              "Content-Type": "application/json",
-            Authorization: `Bearer ${jwt}`
-            },
-          }
-        
+        axios.post('http://localhost:5275/Group', postData,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${jwt}`
+                },
+            }
+
         )
-            .then(response => {
+            .then(response =>
+            {
                 console.log('Post request response:', response.data);
                 // Close the popup
                 onClose();
             })
-            .catch(error => {
+            .catch(error =>
+            {
                 console.error('Post request error:', error);
             });
     };
@@ -71,10 +75,12 @@ function CreateGroupPopup({ onClose }) {
     );
 }
 
-function CreateGroupPage() {
+function CreateGroupPage()
+{
     const [showPopup, setShowPopup] = useState(false);
 
-    const togglePopup = () => {
+    const togglePopup = () =>
+    {
         setShowPopup(!showPopup);
     };
 

@@ -4,12 +4,14 @@ import "./Style.css";
 import logo from "../../../assets/QUIZ TIME.gif";
 import toast from 'react-hot-toast';
 import axios from 'axios';
- 
- 
-const getTime = async (id, jwt) => {
-  try {
+
+
+const getTime = async (id, jwt) =>
+{
+  try
+  {
     const response = await axios.get(
-      "https://localhost:7089/api/Quiz",
+      "http://localhost:5275/api/Quiz",
       {
         params: {
           id
@@ -21,104 +23,124 @@ const getTime = async (id, jwt) => {
       }
     );
     return response.data;
-  } catch (err) {
+  } catch (err)
+  {
     console.log(err);
     return null;
   }
 }
- 
-const StartQuiz = () => {
+
+const StartQuiz = () =>
+{
   const location = useLocation();
   const questions = location.state?.props;
   const [selectedOptions, setSelectedOptions] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [time, setTime] = useState(null); // Store the time data
   const [timer, setTimer] = useState(null); // Initialize timer state in seconds
- 
+
   console.log(questions);
   const jwt = localStorage.getItem('jwt');
-  useEffect(() => {
-    if (questions.length) {
+  useEffect(() =>
+  {
+    if (questions.length)
+    {
       var id = questions[0].quizId;
-      getTime(id, jwt).then(data => {
+      getTime(id, jwt).then(data =>
+      {
         // setTime(data); // Set the time data when received
         setTimer(data?.quizDuration * 60 || 0); // Set the timer to quizDuration in minutes converted to seconds
       });
     }
   }, [questions]);
- 
-  const handleSubmit = () => {
+
+  const handleSubmit = () =>
+  {
     setSubmitted(true);
     let correctAnswers = 0;
-    questions.forEach((question) => {
+    questions.forEach((question) =>
+    {
       const selectedOption = selectedOptions[question.id];
-      if (selectedOption && question.answer.trim() === selectedOption.optionText.trim()) {
+      if (selectedOption && question.answer.trim() === selectedOption.optionText.trim())
+      {
         correctAnswers++;
       }
     });
- 
+
     const totalQuestions = questions.length;
     const message = `You answered ${correctAnswers} out of ${totalQuestions} questions correctly.`;
     toast(message);
   };
- 
-  useEffect(() => {
-    if (timer == 0) {
+
+  useEffect(() =>
+  {
+    if (timer == 0)
+    {
       handleSubmit();
     }
   }, [timer]);
- 
-  useEffect(() => {
+
+  useEffect(() =>
+  {
     let interval;
-    if (timer > 0) {
-      interval = setInterval(() => {
+    if (timer > 0)
+    {
+      interval = setInterval(() =>
+      {
         setTimer(prevTimer => prevTimer - 1);
       }, 1000);
-    } else if(timer === 0){
+    } else if (timer === 0)
+    {
       // Submit quiz automatically when timer reaches 0
     }
-    return () => {
+    return () =>
+    {
       clearInterval(interval);
     };
   }, [timer]);
- 
-  const handleOptionChange = (questionId, optionId, optionText) => {
+
+  const handleOptionChange = (questionId, optionId, optionText) =>
+  {
     setSelectedOptions({ ...selectedOptions, [questionId]: { optionId, optionText } });
   };
- 
+
   const [parentHeight, setParentHeight] = useState('100%');
   const childRef = useRef(null);
- 
-  useEffect(() => {
+
+  useEffect(() =>
+  {
     const childHeight = childRef.current.clientHeight;
     const windowHeight = window.innerHeight;
- 
-    if (childHeight < windowHeight) {
+
+    if (childHeight < windowHeight)
+    {
       setParentHeight('100vh'); // Child is smaller, set parent height to viewport height
-    } else {
+    } else
+    {
       setParentHeight('100%'); // Child is larger, set parent height to 100% of its container
     }
   }, []);
- 
-  const formatTime = (seconds) => {
+
+  const formatTime = (seconds) =>
+  {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
- 
+
   return (
     <div style={{
-      background:'linear-gradient(to bottom, #4338ca, #38bdf8)',
+      background: 'linear-gradient(to bottom, #4338ca, #38bdf8)',
       height: parentHeight
     }}>
       <div className="max-w-screen-xl mx-auto  bg-blue-400 p-8 rounded-lg shadow-md" ref={childRef}>
-        <div className="space-y-8" >    
+        <div className="space-y-8" >
           <img src={logo}
             style={{
-              position:'relative',
-              left:'37%',        
-              width:'300px',
-              height:'150px'
+              position: 'relative',
+              left: '37%',
+              width: '300px',
+              height: '150px'
             }}
           />
           <div className="text-white">{formatTime(timer)} remaining</div>
@@ -160,5 +182,5 @@ const StartQuiz = () => {
     </div>
   );
 };
- 
+
 export default StartQuiz;

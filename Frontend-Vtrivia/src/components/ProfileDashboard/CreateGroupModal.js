@@ -3,53 +3,57 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateGroupModal = ({ isOpen, onClose }) => {
+const CreateGroupModal = ({ isOpen, onClose }) =>
+{
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
   // console.log("DONE");
   // console.log(jwt);
-  const handleCreateGroup =async (e) => {
+  const handleCreateGroup = async (e) =>
+  {
     let grpId;
-      e.preventDefault();
+    e.preventDefault();
 
-      // Dummy data for post request
-      const postData = {
-          name: title,
-          description: description
-      };
+    // Dummy data for post request
+    const postData = {
+      name: title,
+      description: description
+    };
 
-      // Dummy Axios post request
-      await axios.post('https://localhost:7089/Group', postData,
+    // Dummy Axios post request
+    await axios.post('http://localhost:5275/Group', postData,
       {
-          headers: {
-            "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${jwt}`
-          },
-        }
-      
-      )
-          .then(response => {
-              console.log('Post request response:', response.data);
-              grpId=response.data.id;
-              //console.log(grpId);
-              //navigate('/GroupDashboard',)
-              // Close the popup
-              //onClose();
-          })
-          .catch(error => {
-              console.error('Post request error:', error);
-          });
-
-          //console.log("Haaaa"+grpId);
-         await  axios
-      .post(
-        "https://localhost:7089/Group/GetInfo",
-        {
-          grpId:grpId
         },
-        
+      }
+
+    )
+      .then(response =>
+      {
+        console.log('Post request response:', response.data);
+        grpId = response.data.id;
+        //console.log(grpId);
+        //navigate('/GroupDashboard',)
+        // Close the popup
+        //onClose();
+      })
+      .catch(error =>
+      {
+        console.error('Post request error:', error);
+      });
+
+    //console.log("Haaaa"+grpId);
+    await axios
+      .post(
+        "http://localhost:5275/Group/GetInfo",
+        {
+          grpId: grpId
+        },
+
         {
           headers: {
             "Content-Type": "application/json",
@@ -57,11 +61,13 @@ const CreateGroupModal = ({ isOpen, onClose }) => {
           },
         }
       )
-      .then((response) => {
+      .then((response) =>
+      {
         console.log(response.data);
         navigate('/GroupDashboard', { state: { props: response.data } });
       })
-      .catch((error) => {
+      .catch((error) =>
+      {
         console.log(error);
       });
   };
@@ -122,7 +128,7 @@ const CreateGroupModal = ({ isOpen, onClose }) => {
               >
                 Create Group
               </button>
-             
+
             </form>
           </div>
         </div>
